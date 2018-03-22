@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <title>Choose Item with Checkbox</title>
+</head>
+<body>
+<h1>Green Fox Fashion Web Store</h1>
+<form action="#" th:object="${newCloth}" th:action="@{/buy}" method = "post">
+    <table  class="table">
+        <tr>
+            <th>Item name</th>
+            <th>Manufacturer</th>
+            <th>Category</th>
+            <th>Size</th>
+        </tr>
+        <tr >
+            <td th:each="item : ${items}">
+                <label th:for="${#ids.next('newCloth.item')}" th:text="${item}"/>
+                <input type="checkbox" th:field="${newCloth.item}" />
+            </td>
+            <td th:each="manufacturer: ${manufacturers}">
+                <label th:for="${#ids.next('newCloth.manufacturer')}" th:text="${manufacturer}"/>
+                <input type="checkbox" th:field="${newCloth.manufacturer}" />
+            </td><td th:each="category : ${categories}">
+            <label th:for="${#ids.next('newCloth.category')}" th:text="${category}"/>
+            <input type="checkbox" th:field="${newCloth.category}" />
+            </td>
+            <td th:each="size : ${sizes}">
+                <label th:for="${#ids.next('newCloth.size')}" th:text="${size}"/>
+                <input type="checkbox" th:field="${newCloth.size}" />
+            </td>
+        </tr>
+</table>
+</form>
+</body>
+</html>

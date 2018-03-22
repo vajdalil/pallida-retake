@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <title>Warehouse</title>
+</head>
+<body>
+    <h1>Green Fox Fashion Web Store</h1>
+    <form action="#" th:object="${newCloth}" th:action="@{/summary}" method = "post">
+        <select th:field="*{item}">
+            <option value="">Select item name</option>
+            <option th:each="item : ${items}"
+                    th:value="${item}"
+                    th:text="${item}"/>
+        </select>
+        <select th:field="*{size}">
+            <option value="">Select size</option>
+            <option th:each="size : ${sizes}"
+                    th:value="${size}"
+                    th:text="${size}"/>
+        </select>
+        <input type="text" th:field="*{amount}" />
+        <input class="btn btn-info" type="submit" value="GET TOTAL"/>
+    </form>
+    <table  class="table">
+        <tr>
+            <th>Item name</th>
+            <th>Manufacturer</th>
+            <th>Category</th>
+            <th>Size</th>
+            <th>Unit price</th>
+        </tr>
+        <tr th:each="cloth : ${clothes}">
+            <td th:text="${cloth.item}"/>
+            <td th:text="${cloth.manufacturer}"/>
+            <td th:text="${cloth.category}"/>
+            <td th:text="${cloth.size}"/>
+            <td th:text="${cloth.price}"/>
+        </tr>
+    </table>
+</body>
+</html>
